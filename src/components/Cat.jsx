@@ -1,25 +1,33 @@
-import { useContext } from "react";
-import { AppContext } from "./context";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux"
+
+
 const Cat = () => {
-
-    const {post, data, load2} = useContext(AppContext)
     const fun=(e)=>{
-      e.style.color = "red"
+      if(e.style.color === "red"){
+        e.style.color = "white"
+      }
+      else{
+        e.style.color = "red"
+      }
     }
-    return (
 
-      load2 ? <div className="catpage scr">
-        {data.map((e,i) => (
+    const state = useSelector(state => state)
+    const stateB = useSelector(state => state?.apiA?.data?.users)
+    
+    return (
+      !(state.apiB.isLoading) ?
+      <div className="catpage scr">
+        {state?.apiB?.data?.map((e,i) => (
           <div className="cards" key={e.id}>
             <div className="head">
               <div className="head-img">
-                  <img src={post[i].image} alt=" " />
+                  <img src={stateB[i]?.image} alt=" " />
               </div>
               <div className="head-detail">
-                <h2>{post[i].firstName} {post[i].lastName}</h2>
+                <h2>{stateB[i]?.firstName} {stateB[i]?.lastName}</h2>
                 {/* {Number(e.width / 10).toFixed(0)} */}
-                <p> {post[i].age} minutes ago</p>
+                <p> {stateB[i]?.age} minutes ago</p>
               </div>
             </div>
             <div className="image2">
@@ -42,19 +50,20 @@ const Cat = () => {
             </div>
           </div>
         ))}
-      </div> :  
+      </div> :
       <div className="spin">
-        <div className="lds-roller">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+      <div className="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
   </div>
+      
     )
 }
 

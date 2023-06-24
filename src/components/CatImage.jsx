@@ -1,16 +1,16 @@
 import { useParams } from "react-router-dom"
-import { useContext } from "react";
-import { AppContext } from "./context";
+import { useSelector } from "react-redux"
+
 
 const CatImage=()=>{
-    const {data} = useContext(AppContext)
+    const state = useSelector(state => state)
 
     const params = useParams()
     const {id} = params
     return(
         <div className="cat-image">
             <div>
-                <img src={data[id]?.url} alt="" />
+                <img src={state?.apiB?.data[id]?.url} alt="" />
             </div>
         </div>
     )

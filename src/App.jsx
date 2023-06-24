@@ -1,5 +1,4 @@
 import './App.css'
-import React from 'react'
 import SideTab from './components/SideTab'
 import SideTab2 from './components/SideTab2'
 import Navbar from './components/Navbar'
@@ -8,11 +7,21 @@ import Cat from './components/Cat'
 import Contact from './components/Contact'
 import Login from './components/Login'
 import User from './components/Users'
-import { Route, Routes } from 'react-router-dom'
 import FriendTab from './components/FriendTab'
 import CatImage from './components/CatImage'
+import { Route, Routes } from 'react-router-dom'
+import { useDispatch } from "react-redux"
+import { fetchDataA, fetchDataB } from "./store/slices/apiData";
+import { useEffect } from 'react'
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(fetchDataA())
+    dispatch(fetchDataB())
+  },[])
+
   return (
     <>
     <Navbar />

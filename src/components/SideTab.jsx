@@ -6,7 +6,7 @@ const SideTab=()=>{
                 <div className="side_tab_sec1">
                     <h4><i className="fa fa-duotone fa-user"></i> Jay Patel </h4>
                      <li> 
-                        <Link to={"/t/Friend"}>
+                        <Link to={"/t/Friends"}>
                             <i className="fa fa-solid fa-user-group"></i> Friends
                         </Link>
                         </li>
@@ -40,27 +40,27 @@ const SideTab=()=>{
                 <div className="side_tab_sec2">
                     <h4>Your shortcuts</h4>
                     <li> 
-                        <Link to={"/t/Error 404 Not Found!"}>
+                        <Link to={"/t/404 Not Found!"}>
                             Silly Cats Group
                         </Link>
                     </li>
                     <li> 
-                        <Link to={"/t/Error 404 Not Found!"}>
+                        <Link to={"/t/404 Not Found!"}>
                             Kohli fan-group
                         </Link>
                     </li>
                     <li> 
-                        <Link to={"/t/Error 404 Not Found!"}>
+                        <Link to={"/t/404 Not Found!"}>
                             21st century Humor
                         </Link>
                     </li>
                     <li> 
-                        <Link to={"/Error 404 Not Found!"}>
+                        <Link to={"/t/404 Not Found!"}>
                             Dank Memers
                         </Link>
                     </li>
                     <li> 
-                        <Link to={"/t/Error 404 Not Found!"}>
+                        <Link to={"/t/404 Not Found!"}>
                             Bole Jo Koyal Listner
                         </Link>
                     </li>
