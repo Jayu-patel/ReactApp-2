@@ -1,21 +1,22 @@
+// import { configDotenv } from "dotenv";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import key from "../../key";
 
 export const fetchDataA = createAsyncThunk('fetchDataA', async ()=> {
-    const res = await fetch(`https://dummyjson.com/users`)
-    return res.json()
+    const res = await axios.get('https://dummyjson.com/users').then(res => res.data)
+    return res
 })
 
-const key ="live_tImLeo4OWAXw3SmAMajWtCuzmrSrtc3ZnPW9mLjiqfNxbKTKdiGMFw8ycYrMRIJx"
+const apiKey = key
 
 export const fetchDataB = createAsyncThunk('fetchDataB', async ()=> {
-    const res = await fetch(`https://api.thecatapi.com/v1/images/search?limit=30`,{
-        headers: {
-            "x-api-key": key,
-        }
-    })
-    return res.json()
-})
+    const res = await axios.get('https://api.thecatapi.com/v1/images/search?limit=30',{
+        headers:{ "x-api-key": apiKey }
+    }).then(res => res.data)
 
+    return res
+})
 const apiDataA = createSlice({
     name: 'apiA',
     initialState: {
@@ -23,8 +24,8 @@ const apiDataA = createSlice({
         data: null,
         isError: false
     },
-    extraReducers : (b) =>{
-        b.addCase(fetchDataA.pending, (state, action)=>{
+    extraReducers : b =>{
+        b.addCase(fetchDataA.pending, state =>{
             state.isLoading = true
         })
         b.addCase(fetchDataA.fulfilled, (state, action)=>{
@@ -45,8 +46,8 @@ const apiDataB = createSlice({
         data: null,
         isError: false
     },
-    extraReducers : (b) =>{
-        b.addCase(fetchDataB.pending, (state, action)=>{
+    extraReducers : b =>{
+        b.addCase(fetchDataB.pending, state =>{
             state.isLoading = true
         })
         b.addCase(fetchDataB.fulfilled, (state, action)=>{
