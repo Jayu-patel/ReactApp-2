@@ -9,7 +9,8 @@ const SideTab2=()=>{
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-    const n = getRandomInt(5,19)
+    //const n = getRandomInt(5,19)
+    const n = 8
     
     state?.forEach((_,i) => {
         if(i>n && i<n+11){
