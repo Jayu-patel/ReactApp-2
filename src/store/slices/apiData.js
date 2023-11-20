@@ -1,14 +1,16 @@
 // import { configDotenv } from "dotenv";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import key from "../../key";
+// import key from "../../key";
 
 export const fetchDataA = createAsyncThunk('fetchDataA', async ()=> {
     const res = await axios.get('https://dummyjson.com/users').then(res => res.data)
     return res
 })
 
-const apiKey = key
+// const apiKey = key
+// const apiKey = process.env.KEY
+const apiKey = 'live_tImLeo4OWAXw3SmAMajWtCuzmrSrtc3ZnPW9mLjiqfNxbKTKdiGMFw8ycYrMRIJx'
 
 export const fetchDataB = createAsyncThunk('fetchDataB', async ()=> {
     const res = await axios.get('https://api.thecatapi.com/v1/images/search?limit=30',{

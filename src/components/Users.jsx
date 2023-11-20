@@ -32,7 +32,7 @@ const User=()=>{
                     post ? <img src={post.image} alt="" /> : <div>j</div>
                 }
                 </div>
-                <h1>{post.firstName} {post.lastName}</h1>
+                <h1 className="font-bold">{post.firstName} {post.lastName}</h1>
                 <h4>{post.email}</h4>
             </div>
             <div className="sec2">

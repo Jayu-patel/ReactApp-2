@@ -1,25 +1,24 @@
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux"
-
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux"
+import { like } from "../store/slices/likeSlice";
 
 const Cat = () => {
-    const fun=(e)=>{
-      if(e.style.color === "red"){
-        e.style.color = "white"
-      }
-      else{
-        e.style.color = "red"
-      }
-    }
+    const dispatch = useDispatch()
 
     const state = useSelector(state => state)
     const stateB = useSelector(state => state?.apiA?.data?.users)
+    console.log(state.like)
+
+    const f=(e,a,n)=>{
+      dispatch(like({...e, n: i}))
+    }
+    console.log(state.like)
     
     return (
       !(state.apiB.isLoading) ?
-      <div className="catpage scr">
-        {state?.apiB?.data?.map((e,i) => (
-          <div className="cards" key={e.id}>
+      <div className="catpage sc">
+        {state?.apiB?.data?.map((e,i) => {
+          return <div className="cards" key={e.id}>
             <div className="head">
               <div className="head-img">
                   <img src={stateB[i]?.image} alt=" " />
@@ -31,13 +30,16 @@ const Cat = () => {
               </div>
             </div>
             <div className="image2">
-              <NavLink to={"/"+i} preventScrollReset>
+              <Link to={"/"+i} preventScrollReset>
                   <img src={e?.url} alt=" " />
-                </NavLink>
+                </Link>
             </div>
             <div className="detail">
               <div className="btn-sec">
-                <div><i className="fa fa-heart heart" aria-hidden="true" style={{cursor : "pointer"}} onClick={(e)=>{fun(e.target)}}></i> {Number(e.width / 10).toFixed(0)}k</div>
+                <div><i className={`fa fa-heart heart btn `+state?.like[i]?.style} aria-hidden="true" style={
+                  {cursor : "pointer", color: state.like[i].style}
+                  } onClick={()=>{dispatch(like({...e, n: i}))}
+                  }></i> {Number(e.width / 10).toFixed(0)}k</div>
               </div>
 
               <div className="btn-sec">
@@ -49,7 +51,7 @@ const Cat = () => {
               </div>
             </div>
           </div>
-        ))}
+        })}
       </div> :
       <div className="spin">
       <div className="lds-roller">
