@@ -9,19 +9,19 @@ const Alluser=()=>{
       !(state.apiA.isLoading) ? 
       <div className="user-box use scr">
         {state?.apiA?.data?.users?.map((e) => (
-          <Link to={"/user/"+e.id} key={e.id} preventScrollReset>
+          <Link to={"/user/"+e?.id} key={e?.id} preventScrollReset>
             <div
               className="all-user"
-              key={e.id}
+              key={e?.id}
             >
               <div className="user-detail-image">
-                <img src={e.image} key={e.id} alt="" />
+                <img src={e?.image} key={e?.id} alt="" />
               </div>
               <div className="user-detail">
                 <h2>
-                  {e.firstName} {e.lastName}
+                  {e?.firstName} {e?.lastName}
                 </h2>
-                <p className="email">{e.email}</p>
+                <p className="email">{e?.email}</p>
               </div>
             </div>
           </Link>

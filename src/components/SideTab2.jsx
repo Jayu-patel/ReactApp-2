@@ -2,7 +2,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector"
 
 const SideTab2=()=>{
     const state = useSelector(state => state?.apiA?.data?.users)
-    const arr = []
+    let arr = []
 
     // function getRandomInt(min, max) {
     //     min = Math.ceil(min);
