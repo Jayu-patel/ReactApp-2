@@ -6,7 +6,7 @@ export const fetchDataA = createAsyncThunk('fetchDataA', async ()=> {
     return res
 })
 
-const apiKey = 'live_tImLeo4OWAXw3SmAMajWtCuzmrSrtc3ZnPW9mLjiqfNxbKTKdiGMFw8ycYrMRIJx'
+const apiKey = process.env.KEY
 
 export const fetchDataB = createAsyncThunk('fetchDataB', async ()=> {
     const res = await axios.get('https://api.thecatapi.com/v1/images/search?limit=30',{
